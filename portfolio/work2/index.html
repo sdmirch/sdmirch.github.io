@@ -103,31 +103,67 @@
          <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.
 </p>
 
-<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-
-<ol>
-<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-<li>Aliquam tincidunt mauris eu risus.</li>
-</ol>
+<h2 id="tl-dr">tl;dr</h2>
 
 <blockquote>
-<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn&rsquo;t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
+<p>Power-Middle influencers on Instagram are a more effective and authentic option for marketing niche products to targeted communities. I created a methodology to select, construct, and analyze community networks within Instagram. Elite Power-Middle influencers were identified using social centrality measures and sentiment analysis of captions. Technologies used include Python, NetworkX, MongoDB, Selenium, and vaderSentiment.</p>
 </blockquote>
 
-<h2 id="header-level-2">Header Level 2</h2>
+<h2 id="business-question">Business Question</h2>
 
-<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+<p>Requesting promotion of a product from a celebrity with a large (millions) social media following is not just expensive - it is obvious to followers that they have been solicited to sponsor certain brands or items, and therefore seems less authentic. To market to a smaller, targeted audience, it is more affordable and effective to identify a “power-middle” influencer. These influencers will be more influential to their intimate and loyal following they have amassed.</p>
 
-<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn&rsquo;t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
+<p>How do you find power-middle influencers who will be the most influential to the group of people you are trying to target?</p>
+
+<h2 id="data-understanding-and-preparation">Data Understanding and Preparation</h2>
+
+<h3 id="general-outline-of-data-collection">General Outline of Data Collection:</h3>
 
 <ul>
-<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-<li>Aliquam tincidunt mauris eu risus.</li>
+<li>Choose a community: Take female climbers for instance.</li>
+<li>Identify potential power-middle influencers: Find people who posted content with the hashtag #womenwhoclimb on Instagram (using requests, see webscrape_util/instascrape.py).</li>
+<li>Estimate the rest of the community: Find people influenced by the influencers, therefore find people who followed these potential influencers (using selenium, see webscrape_util/followscrape.py).</li>
 </ul>
 
-<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then</p>
+<h3 id="conceptualization">Conceptualization:</h3>
+
+<p>A social network graph (Digraph in NetworkX, graph_util/make_graph.py) is constructed using the influencers and followers. This graph can be used to identify power-middle influencers and other interesting features about the community.
+* Number of nodes: 2268840
+* Number of edges: 3582464
+* Number of potential influencers: 1775</p>
+
+<h2 id="modeling">Modeling</h2>
+
+<h3 id="assumptions-about-top-power-middle-influencers">Assumptions about Top Power-Middle Influencers:</h3>
+
+<ul>
+<li>They have a <em>critical mass</em> following so that enough people will view their content.</li>
+<li>They <em>interact</em> with their community so followers are more likely to like or comment on posts.</li>
+<li>They <em>influence</em> a distinct community, therefore they are not just a celebrity with millions of random followers.</li>
+<li>They post <em>authentic</em> content and are not obviously marketing in an insincere way.</li>
+</ul>
+
+<h3 id="modeling-to-identify-top-power-middle-influencers">Modeling to Identify Top Power-Middle Influencers:</h3>
+
+<ul>
+<li><p><em>Critical Mass Filter</em>: influencers must have more than 5000 followers.</p></li>
+
+<li><p><em>Interaction Score</em>: equal to the ratio of likes to followers.</p></li>
+
+<li><p><em>Influencer Score</em>: equal to eigenvector centrality which gives higher scores to influencers who are connected to other key members of the community.</p></li>
+
+<li><p><em>Authenticity Score</em>: inversely proportional to the positive sentiment in their captions with the assumptions that marketing text is often overly positive and followers are more likely to trust influencers that are more candid.</p></li>
+</ul>
+
+<p>Those scores are weighted and summed to determine and overall score:</p>
+
+<p><img src="img/portfolio/OverallScore.png" alt="Overall Score" /></p>
+
+<h2 id="evaluation">Evaluation</h2>
+
+<p>Performance was evaluated by:
+- Determining if top influencers were already endorsing products, meaning that industry experts had deemed them to be influencers already.
+- Checking if top influencers on the leaderboard shave posts which show up in the &ldquo;top results&rdquo; of the search page for the #womenwhoclimb hashtag, which shows trending content.</p>
          
       </div>
     </div>
