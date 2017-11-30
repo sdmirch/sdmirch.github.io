@@ -119,13 +119,13 @@
 
 <p>Unfortunately there was no beautiful social-media dataset which would allow me to identify power-middle influencers, so I needed to collect the data myself. To do so, I narrowed the scope of the problem by choosing a community I wanted to target (take female climbers for instance). I then collected data on potential power-middle influencers by assuming people who posted content with a specific hashtag (#womenwhoclimb) were attempting to get their messages out into the universe. To estimate the rest of the community, I collected data about people who were influenced by the influencers &ndash; therefore people who followed these potential power-middle influencers. I then amassed this data into an influencer-follower network.</p>
 
-<p>Turns out, that network was pretty big - 2,268,840 nodes and 3,582,464 edges! However, there were only 1775 unique potential influencers (out of 5000 scraped posts with #womenwhoclimb). The next step was to figure out who were the <em>elite</em> power-middle influencers.</p>
+<p>Turns out, that network was pretty big - 2,268,840 nodes and 3,582,464 edges! However, there were only 1775 unique potential influencers (out of 5000 scraped posts with #womenwhoclimb). The next step was to figure out who were the <strong>elite</strong> power-middle influencers.</p>
 
 <h2 id="modeling">Modeling</h2>
 
-<h3 id="assumptions-about-elite-power-middle-influencers">Assumptions about Elite Power-Middle Influencers:</h3>
+<h3 id="assumptions-about-elite-influencers">Assumptions about Elite Influencers:</h3>
 
-<p>To find the elite influencers, I made some assumptions about their Instagram qualities.</p>
+<p>To find the elite power-middle influencers, I made some assumptions about their Instagram qualities.</p>
 
 <ul>
 <li>They have a <strong>critical mass</strong> following so that <em>enough</em> people will view their content.</li>
@@ -134,7 +134,7 @@
 <li>They post <strong>authentic</strong> content and are not obviously marketing in an insincere way.</li>
 </ul>
 
-<h3 id="modeling-to-identify-top-power-middle-influencers">Modeling to Identify Top Power-Middle Influencers:</h3>
+<h3 id="modeling-to-identify-elite-influencers">Modeling to Identify Elite Influencers:</h3>
 
 <h4 id="critical-mass-filter">Critical Mass Filter:</h4>
 
@@ -172,13 +172,13 @@
 <p>Checked if top influencers on the leaderboard shave posts which show up in the &ldquo;top results&rdquo; of the search page for the #womenwhoclimb hashtag, which shows trending content.</p>
 </blockquote>
 
-<p>Turns out, every person on the leaderboard was already sponsored in some fashion, and they appeared in the &ldquo;top results&rdquo; section at least once over the span of this two-week project.</p>
+<p>Turns out, every person on the leaderboard was already sponsored in some fashion, and they all appeared in the &ldquo;top results&rdquo; section at least once over the span of this two-week project.</p>
 
 <h2 id="conclusions-and-future-work">Conclusions and Future Work</h2>
 
 <p>The data pipeline for identifying power-middle influencers on Instagram yielded some promising first-cut results! Network analysis is a powerful way to analyze social media interactions and can be useful for niche marketing campaigns.</p>
 
-<p>The next steps for this project include expanding the interaction score to include comment-response interactions and averaging an authenticity score for all their captions instead of only the caption for post with the specific hashtag. I would also like to create a scoring methodology for micro-influencers.</p>
+<p>The next steps for this project include expanding the interaction score to include comment-response interactions and averaging an authenticity score for all captions instead of only the caption for post with the specific hashtag. I would also like to create a scoring methodology for micro-influencers.</p>
 
 <h2 id="want-to-see-more">Want to see more?</h2>
 
